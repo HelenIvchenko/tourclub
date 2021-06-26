@@ -12,12 +12,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        primaryStage.setTitle("Tour Club \"Hiking with Olena\"");
-//        Button button = new Button("This button does nothing");
-//        HBox hbox = new HBox(button);
-//        primaryStage.setScene(new Scene(hbox, 800, 600));
-//        primaryStage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Tour Club \"Hiking with Olena\"");
+        Button button = new Button("Download data from csv");
+
+        HBox hbox = new HBox(button);
+        primaryStage.setScene(new Scene(hbox, 1200, 800));
+        primaryStage.show();
     }
 
 
@@ -27,8 +28,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-     //   launch(args);
-       Amateur vasia = new Amateur("Vasia","Pupkin");
-        System.out.println(vasia.getName());
+        launch(args);
+//       Amateur vasia = new Amateur("Vasia","Pupkin");
+//        System.out.println(vasia.getName());
     }
 }
