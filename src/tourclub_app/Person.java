@@ -4,7 +4,7 @@ public abstract class Person {
 
     protected String name;
     protected String surname;
-    protected int age;
+    protected int birthYear;
     protected String gender;
 
     Person() {
@@ -26,8 +26,8 @@ public abstract class Person {
         return surname;
     }
 
-    public int getAge() {
-        return age;
+    public int getBirthYear() {
+        return birthYear;
     }
 
     public String getGender() {
