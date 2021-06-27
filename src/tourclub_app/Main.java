@@ -12,12 +12,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("tourclub.fxml"));
         primaryStage.setTitle("Tour Club \"Hiking with Olena\"");
-        Button button = new Button("Download data from csv");
 
-        HBox hbox = new HBox(button);
-        primaryStage.setScene(new Scene(hbox, 1200, 800));
+        primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
     }
 
