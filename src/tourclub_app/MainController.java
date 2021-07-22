@@ -1,21 +1,41 @@
 package tourclub_app;
 
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
 
+import javafx.scene.control.TableView;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MainController {
-    List<Person> amateurs = new ArrayList<>();
+    ObservableList<Person> amateurs = FXCollections.observableArrayList();
+    ObservableList<Person> sportsmen = FXCollections.observableArrayList();
+    ObservableList<Person> managers = FXCollections.observableArrayList();
+    ObservableList<Person> coaches = FXCollections.observableArrayList();
     DataReader reader = new DataReader();
 
     @FXML
-    private Text reactive_text;
+    private TableView<Person> amateur_table;
+
+    @FXML
+    private TableView<Person> sportsman_table;
+
+    @FXML
+    private TableView<Person> managers_table;
+
+    @FXML
+    private TableView<Person> coaches_table;
 
     @FXML
     protected void CloseAppAction(ActionEvent event) {
@@ -60,10 +80,20 @@ public class MainController {
                 }
             }
             amateurs=reader.amateurs;
+            sportsmen=reader.sportsmen;
+            managers=reader.managers;
+            coaches=reader.coaches;
             csvReader.close();
+            amateur_table.setItems(amateurs);
+            sportsman_table.setItems(sportsmen);
+            managers_table.setItems(managers);
+            coaches_table.setItems(coaches);
 
-            // reactive_text.setText("Here csv file is processed and input is set somewhere");
         }
     }
 
+    @FXML
+    protected void AddAmateur(ActionEvent event) throws IOException{
+
+    }
 }

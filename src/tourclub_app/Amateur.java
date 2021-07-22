@@ -1,5 +1,8 @@
 package tourclub_app;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Amateur extends Person {
 
     private boolean canSwim;
@@ -12,15 +15,13 @@ public class Amateur extends Person {
     }
 
     Amateur(String surname, String name, String birthYear, String gender, String canSwim) {
-        this.name = name;
-        this.surname = surname;
-        this.birthYear = Integer.parseInt(birthYear);
-        this.gender = gender;
-        if (canSwim.equalsIgnoreCase("Yes")) {
-            this.canSwim = true;
-        } else {
-            this.canSwim = false;
-        }
+        this.name = new SimpleStringProperty(name);
+        this.surname = new SimpleStringProperty(surname);
+        this.birthYear = new SimpleIntegerProperty(Integer.parseInt(birthYear));
+        this.gender = new SimpleStringProperty(gender);
+        this.canSwim = canSwim.equalsIgnoreCase("Yes");
+
     }
+
 
 }

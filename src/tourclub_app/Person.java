@@ -1,36 +1,39 @@
 package tourclub_app;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.control.TableView;
 
 public abstract class Person {
 
-    protected String name;
-    protected String surname;
-    protected int birthYear;
-    protected String gender;
+    protected SimpleStringProperty name;
+    protected SimpleStringProperty surname;
+    protected SimpleIntegerProperty birthYear;
+    protected SimpleStringProperty gender;
 
     Person() {
-        this.name = "Unknown";
-        this.surname = "Unknown";
+        this.name = new SimpleStringProperty("Unknown");
+        this.surname = new SimpleStringProperty("Unknown");
     }
 
     Person(String name,
            String surname) {
-        this.name = name;
-        this.surname = surname;
+        this.name = new SimpleStringProperty(name);
+        this.surname = new SimpleStringProperty(surname);
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
     public String getSurname() {
-        return surname;
+        return surname.get();
     }
 
     public int getBirthYear() {
-        return birthYear;
+        return birthYear.get();
     }
 
     public String getGender() {
-        return gender;
+        return gender.get();
     }
 }
