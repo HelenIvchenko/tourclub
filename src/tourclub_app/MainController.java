@@ -7,18 +7,21 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.scene.control.cell.CheckBoxTableCell;
 
-import javafx.scene.control.TableView;
 import java.io.*;
 import java.util.*;
 
 public class MainController {
+
     ObservableList<Person> amateurs = FXCollections.observableArrayList();
     ObservableList<Person> sportsmen = FXCollections.observableArrayList();
     ObservableList<Person> managers = FXCollections.observableArrayList();
@@ -27,6 +30,14 @@ public class MainController {
 
     @FXML
     private TableView<Person> amateur_table;
+    public TableColumn<Person, Integer> amateur_birth;
+    public TableColumn<Person, Boolean> amateur_swim;
+    public TextField add_amateur_surname;
+    public TextField add_amateur_name;
+    public TextField add_amateur_year;
+    public TextField add_amateur_gender;
+    public Button add_amateur_button;
+    public CheckBox add_amateur_swim;
 
     @FXML
     private TableView<Person> sportsman_table;
@@ -37,6 +48,10 @@ public class MainController {
     @FXML
     private TableView<Person> coaches_table;
 
+    public void initialize() {
+        amateur_birth.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        amateur_swim.setCellFactory(tc -> new CheckBoxTableCell<>());
+    }
     @FXML
     protected void CloseAppAction(ActionEvent event) {
         Platform.exit();
@@ -58,25 +73,11 @@ public class MainController {
             while ((row = csvReader.readLine()) != null) {
                 if (rowsCount == 0) {
                     rowsCount++;
-                    continue;
                 } else {
                     rowsCount++;
                     String[] data = row.split(",");
 
                     reader.readData(data);
-                   // amateurs.add(reader.amateur);
-                    // do something with the data
-//                    switch (data[0]) {
-//                        case ("Amateur"):
-//                            amateur = new Amateur(data[1],
-//                                    data[2],
-//                                    data[3],
-//                                    data[4],
-//                                    data[5]);
-//                            amateurs.add(amateur);
-//                            break;
-//                    }
-
                 }
             }
             amateurs=reader.amateurs;
@@ -94,6 +95,16 @@ public class MainController {
 
     @FXML
     protected void AddAmateur(ActionEvent event) throws IOException{
+        String name = add_amateur_name.getText();
+        String surname = add_amateur_surname.getText();
+        String year = add_amateur_year.getText();
+        String gender = add_amateur_gender.getText();
+        String swim;
+        if(add_amateur_swim.isSelected()) swim = "Yes";
+        else { swim = "No"; }
 
+        Amateur amateur = new Amateur(name, surname, year, gender, swim);
+        amateurs.add(amateur);
     }
+
 }
