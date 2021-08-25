@@ -25,6 +25,10 @@ public abstract class Person {
         return name.get();
     }
 
+    public void setName(String set_name) {
+        this.name.set(set_name);
+    }
+
     public String getSurname() {
         return surname.get();
     }

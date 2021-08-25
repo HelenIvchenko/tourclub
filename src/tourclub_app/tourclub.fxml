@@ -11,38 +11,38 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.cell.TextFieldTableCell?>
-<?import javafx.scene.control.cell.CheckBoxTableCell?>
-<?import tourclub_app.AmateurCanSwimValueFactory?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tourclub_app.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tourclub_app.MainController">
     <top>
         <MenuBar fx:id="MainMenu" BorderPane.alignment="TOP_CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#DownloadFromCSVAction" text="Download from csv" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" onAction="#CloseAppAction" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#DownloadFromCSVAction" text="Download from csv"/>
+                        <MenuItem mnemonicParsing="false" onAction="#SaveAction" text="Save"/>
+                        <MenuItem mnemonicParsing="false" onAction="#CloseAppAction" text="Close"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                     <items>
                         <Menu mnemonicParsing="false" text="Add">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#AddAmateur" text="Amateur" />
-                                <MenuItem mnemonicParsing="false" text="Trainer" />
-                                <MenuItem mnemonicParsing="false" text="Sportsman" />
-                                <MenuItem mnemonicParsing="false" text="Manager" />
+                                <MenuItem mnemonicParsing="false" onAction="#AddAmateur" text="Amateur"/>
+                                <MenuItem mnemonicParsing="false" text="Trainer"/>
+                                <MenuItem mnemonicParsing="false" text="Sportsman"/>
+                                <MenuItem mnemonicParsing="false" text="Manager"/>
                             </items>
                         </Menu>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#HelpAction" text="About"/>
                     </items>
                 </Menu>
             </menus>
@@ -55,50 +55,60 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="amateur_table" editable="true" layoutX="7.0" layoutY="8.0" prefHeight="258.0" prefWidth="592.0">
+                                <TableView fx:id="amateur_table" editable="true" layoutX="7.0" layoutY="8.0"
+                                           prefHeight="258.0" prefWidth="592.0">
                                     <columns>
-                                        <TableColumn id="name" prefWidth="75.0" text="Name">
+                                        <TableColumn id="name" fx:id="amateur_name" prefWidth="75.0" text="Name">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="name" />
+                                                <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
                                             <cellFactory>
-                                                <TextFieldTableCell fx:factory="forTableColumn" />
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
                                             </cellFactory>
                                         </TableColumn>
-                                        <TableColumn id="surname" prefWidth="75.0" text="Surname">
+                                        <TableColumn id="surname" fx:id="amateur_surname" prefWidth="75.0"
+                                                     text="Surname">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="surname" />
+                                                <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
                                             <cellFactory>
-                                                <TextFieldTableCell fx:factory="forTableColumn" />
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
                                             </cellFactory>
                                         </TableColumn>
-                                        <TableColumn id="birthYear" fx:id="amateur_birth" prefWidth="75.0" text="Birth Year">
+                                        <TableColumn id="birthYear" fx:id="amateur_birth" prefWidth="75.0"
+                                                     text="Birth Year">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="birthYear" />
+                                                <PropertyValueFactory property="birthYear"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="gender" prefWidth="75.0" text="Gender">
+                                        <TableColumn id="gender" fx:id="amateur_gender" prefWidth="75.0" text="Gender">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="gender" />
+                                                <PropertyValueFactory property="gender"/>
                                             </cellValueFactory>
                                             <cellFactory>
-                                                <TextFieldTableCell fx:factory="forTableColumn" />
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
                                             </cellFactory>
                                         </TableColumn>
-                                        <TableColumn id="canSwim" prefWidth="75.0" text="Can Swim" fx:id="amateur_swim">
+                                        <TableColumn id="canSwim" fx:id="amateur_swim" prefWidth="75.0" text="Can Swim">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="canSwim" />
+                                                <PropertyValueFactory property="canSwim"/>
                                             </cellValueFactory>
                                         </TableColumn>
                                     </columns>
                                 </TableView>
-                        <TextField fx:id="add_amateur_name" layoutX="14.0" layoutY="282.0" prefHeight="25.0" prefWidth="70.0" text="Name" />
-                        <TextField fx:id="add_amateur_surname" layoutX="96.0" layoutY="282.0" prefHeight="25.0" prefWidth="70.0" text="Surname" />
-                        <TextField fx:id="add_amateur_year" layoutX="176.0" layoutY="282.0" prefHeight="25.0" prefWidth="70.0" text="Birth Year" />
-                        <TextField fx:id="add_amateur_gender" layoutX="257.0" layoutY="282.0" prefHeight="25.0" prefWidth="70.0" text="Gender" />
-                        <CheckBox fx:id="add_amateur_swim" layoutX="342.0" layoutY="286.0" mnemonicParsing="false" text="Can Swim" />
-                        <Button fx:id="add_amateur_button" layoutX="450.0" layoutY="282.0" mnemonicParsing="false" onAction="#AddAmateur" prefHeight="22.0" prefWidth="89.0" text="Add" />
+                                <TextField fx:id="add_amateur_name" layoutX="14.0" layoutY="282.0" prefHeight="25.0"
+                                           prefWidth="70.0" text="Name"/>
+                                <TextField fx:id="add_amateur_surname" layoutX="96.0" layoutY="282.0" prefHeight="25.0"
+                                           prefWidth="70.0" text="Surname"/>
+                                <TextField fx:id="add_amateur_year" layoutX="176.0" layoutY="282.0" prefHeight="25.0"
+                                           prefWidth="70.0" text="Birth Year"/>
+                                <TextField fx:id="add_amateur_gender" layoutX="257.0" layoutY="282.0" prefHeight="25.0"
+                                           prefWidth="70.0" text="Gender"/>
+                                <CheckBox fx:id="add_amateur_swim" layoutX="342.0" layoutY="286.0"
+                                          mnemonicParsing="false" text="Can Swim"/>
+                                <Button fx:id="add_amateur_button" layoutX="450.0" layoutY="282.0"
+                                        mnemonicParsing="false" onAction="#AddAmateur" prefHeight="22.0"
+                                        prefWidth="89.0" text="Add"/>
                             </children>
                         </AnchorPane>
                     </content>
@@ -107,31 +117,40 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="sportsman_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0" prefWidth="592.0">
+                                <TableView fx:id="sportsman_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0"
+                                           prefWidth="592.0">
                                     <columns>
-                                        <TableColumn id="name" prefWidth="75.0" text="Name">
+                                        <TableColumn id="name" fx:id="sportsman_name" prefWidth="75.0" text="Name">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="name" />
+                                                <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="surname" prefWidth="75.0" text="Surname">
+                                        <TableColumn id="surname" fx:id="sportsman_surname" prefWidth="75.0"
+                                                     text="Surname">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="surname" />
+                                                <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="birthYear" prefWidth="75.0" text="Birth Year">
+                                        <TableColumn id="birthYear" fx:id="sportsman_birth" prefWidth="75.0"
+                                                     text="Birth Year">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="birthYear" />
+                                                <PropertyValueFactory property="birthYear"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="gender" prefWidth="75.0" text="Gender">
+                                        <TableColumn id="gender" fx:id="sportsman_gender" prefWidth="75.0"
+                                                     text="Gender">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="gender" />
+                                                <PropertyValueFactory property="gender"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="level" prefWidth="75.0" text="Level">
+                                        <TableColumn id="level" fx:id="sportsman_level" prefWidth="75.0" text="Level">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="level" />
+                                                <PropertyValueFactory property="level"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn id="canSwim" fx:id="sportsman_swim" prefWidth="75.0" text="Can Swim">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="canSwim"/>
                                             </cellValueFactory>
                                         </TableColumn>
                                     </columns>
@@ -144,31 +163,32 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="managers_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0" prefWidth="592.0">
+                                <TableView fx:id="managers_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0"
+                                           prefWidth="592.0">
                                     <columns>
-                                        <TableColumn id="name" prefWidth="75.0" text="Name">
+                                        <TableColumn id="name" fx:id="manager_name" prefWidth="75.0" text="Name">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="name" />
+                                                <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="surname" prefWidth="75.0" text="Surname">
+                                        <TableColumn id="surname" fx:id="manager_surname" prefWidth="75.0" text="Surname">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="surname" />
+                                                <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="birthYear" prefWidth="75.0" text="Birth Year">
+                                        <TableColumn id="birthYear" fx:id="manager_birth" prefWidth="75.0" text="Birth Year">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="birthYear" />
+                                                <PropertyValueFactory property="birthYear"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="gender" prefWidth="75.0" text="Gender">
+                                        <TableColumn id="gender" fx:id="manager_gender" prefWidth="75.0" text="Gender">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="gender" />
+                                                <PropertyValueFactory property="gender"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="salary" prefWidth="75.0" text="Salary">
+                                        <TableColumn id="salary" fx:id="manager_salary" prefWidth="75.0" text="Salary">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="salary" />
+                                                <PropertyValueFactory property="salary"/>
                                             </cellValueFactory>
                                         </TableColumn>
                                     </columns>
@@ -181,36 +201,37 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="coaches_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0" prefWidth="592.0">
+                                <TableView fx:id="coaches_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0"
+                                           prefWidth="592.0">
                                     <columns>
-                                        <TableColumn id="name" prefWidth="75.0" text="Name">
+                                        <TableColumn id="name" fx:id="coach_name" prefWidth="75.0" text="Name">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="name" />
+                                                <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="surname" prefWidth="75.0" text="Surname">
+                                        <TableColumn id="surname" fx:id="coach_surname" prefWidth="75.0" text="Surname">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="surname" />
+                                                <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="birthYear" prefWidth="75.0" text="Birth Year">
+                                        <TableColumn id="birthYear" fx:id="coach_birth" prefWidth="75.0" text="Birth Year">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="birthYear" />
+                                                <PropertyValueFactory property="birthYear"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="gender" prefWidth="75.0" text="Gender">
+                                        <TableColumn id="gender" fx:id="coach_gender" prefWidth="75.0" text="Gender">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="gender" />
+                                                <PropertyValueFactory property="gender"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="level" prefWidth="75.0" text="Level">
+                                        <TableColumn id="level" fx:id="coach_level" prefWidth="75.0" text="Level">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="level" />
+                                                <PropertyValueFactory property="level"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="salary" prefWidth="75.0" text="Salary">
+                                        <TableColumn id="salary" fx:id="coach_salary" prefWidth="75.0" text="Salary">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="salary" />
+                                                <PropertyValueFactory property="salary"/>
                                             </cellValueFactory>
                                         </TableColumn>
                                     </columns>

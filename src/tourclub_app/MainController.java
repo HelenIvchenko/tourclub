@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.scene.control.cell.CheckBoxTableCell;
 
@@ -30,6 +32,7 @@ public class MainController {
 
     @FXML
     private TableView<Person> amateur_table;
+    public TableColumn<Person, String> amateur_name;
     public TableColumn<Person, Integer> amateur_birth;
     public TableColumn<Person, Boolean> amateur_swim;
     public TextField add_amateur_surname;
@@ -49,12 +52,36 @@ public class MainController {
     private TableView<Person> coaches_table;
 
     public void initialize() {
+        amateur_name.setOnEditCommit(
+                CellEditEvent -> CellEditEvent.getTableView().getItems().get(
+                        CellEditEvent.getTablePosition().getRow()).setName(CellEditEvent.getNewValue()));
+
         amateur_birth.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         amateur_swim.setCellFactory(tc -> new CheckBoxTableCell<>());
+        amateur_table.setItems(amateurs);
+        sportsman_table.setItems(sportsmen);
+        managers_table.setItems(managers);
+        coaches_table.setItems(coaches);
+
+
     }
+
     @FXML
     protected void CloseAppAction(ActionEvent event) {
         Platform.exit();
+    }
+
+    @FXML
+    protected void HelpAction(ActionEvent event) {
+        System.out.println("debug");
+    }
+
+    @FXML
+    protected void SaveAction(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save");
+        File csv_file = fileChooser.showSaveDialog(null);
+        //TODO: Actually save data to file
     }
 
     @FXML
@@ -80,10 +107,10 @@ public class MainController {
                     reader.readData(data);
                 }
             }
-            amateurs=reader.amateurs;
-            sportsmen=reader.sportsmen;
-            managers=reader.managers;
-            coaches=reader.coaches;
+            amateurs = reader.amateurs;
+            sportsmen = reader.sportsmen;
+            managers = reader.managers;
+            coaches = reader.coaches;
             csvReader.close();
             amateur_table.setItems(amateurs);
             sportsman_table.setItems(sportsmen);
@@ -94,16 +121,19 @@ public class MainController {
     }
 
     @FXML
-    protected void AddAmateur(ActionEvent event) throws IOException{
+    protected void AddAmateur(ActionEvent event) throws IOException {
         String name = add_amateur_name.getText();
         String surname = add_amateur_surname.getText();
         String year = add_amateur_year.getText();
         String gender = add_amateur_gender.getText();
         String swim;
-        if(add_amateur_swim.isSelected()) swim = "Yes";
-        else { swim = "No"; }
+        if (add_amateur_swim.isSelected()) swim = "Yes";
+        else {
+            swim = "No";
+        }
 
-        Amateur amateur = new Amateur(name, surname, year, gender, swim);
+
+        Amateur amateur = new Amateur (surname, name, year, gender, swim);
         amateurs.add(amateur);
     }
 
