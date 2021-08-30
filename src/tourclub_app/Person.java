@@ -1,4 +1,5 @@
 package tourclub_app;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TableView;
@@ -6,8 +7,23 @@ import javafx.scene.control.TableView;
 public abstract class Person {
 
     protected SimpleStringProperty name;
+
+    public void setSurname(String surname) {
+        this.surname.set(surname);
+    }
+
     protected SimpleStringProperty surname;
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear.set(birthYear);
+    }
+
     protected SimpleIntegerProperty birthYear;
+
+    public void setGender(String gender) {
+        this.gender.set(gender);
+    }
+
     protected SimpleStringProperty gender;
 
     Person() {

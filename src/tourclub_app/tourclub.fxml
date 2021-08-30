@@ -49,7 +49,7 @@
         </MenuBar>
     </top>
     <center>
-        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <TabPane prefHeight="423.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
                 <Tab text="Amateurs">
                     <content>
@@ -97,18 +97,21 @@
                                     </columns>
                                 </TableView>
                                 <TextField fx:id="add_amateur_name" layoutX="14.0" layoutY="282.0" prefHeight="25.0"
-                                           prefWidth="70.0" text="Name"/>
+                                           prefWidth="70.0" promptText="Name" text="TestName"/>
                                 <TextField fx:id="add_amateur_surname" layoutX="96.0" layoutY="282.0" prefHeight="25.0"
-                                           prefWidth="70.0" text="Surname"/>
+                                           prefWidth="70.0" promptText="Surname" text="TestSurname"/>
                                 <TextField fx:id="add_amateur_year" layoutX="176.0" layoutY="282.0" prefHeight="25.0"
-                                           prefWidth="70.0" text="Birth Year"/>
+                                           prefWidth="70.0" promptText="Birth Year" text="1985"/>
                                 <TextField fx:id="add_amateur_gender" layoutX="257.0" layoutY="282.0" prefHeight="25.0"
-                                           prefWidth="70.0" text="Gender"/>
+                                           prefWidth="70.0" promptText="Gender" text="TestGender"/>
                                 <CheckBox fx:id="add_amateur_swim" layoutX="342.0" layoutY="286.0"
                                           mnemonicParsing="false" text="Can Swim"/>
-                                <Button fx:id="add_amateur_button" layoutX="450.0" layoutY="282.0"
-                                        mnemonicParsing="false" onAction="#AddAmateur" prefHeight="22.0"
-                                        prefWidth="89.0" text="Add"/>
+                                <Button fx:id="add_amateur_button" layoutX="425.0" layoutY="282.0"
+                                        mnemonicParsing="false" onAction="#AddAmateur" prefHeight="25.0"
+                                        prefWidth="56.0" text="Add"/>
+                                <Button fx:id="delete_amateur_button" layoutX="509.0" layoutY="282.0"
+                                        mnemonicParsing="false" onAction="#DeleteAmateur" prefHeight="25.0"
+                                        prefWidth="53.0" text="Delete"/>
                             </children>
                         </AnchorPane>
                     </content>
@@ -148,7 +151,8 @@
                                                 <PropertyValueFactory property="level"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="canSwim" fx:id="sportsman_swim" prefWidth="75.0" text="Can Swim">
+                                        <TableColumn id="canSwim" fx:id="sportsman_swim" prefWidth="75.0"
+                                                     text="Can Swim">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="canSwim"/>
                                             </cellValueFactory>
@@ -171,12 +175,14 @@
                                                 <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="surname" fx:id="manager_surname" prefWidth="75.0" text="Surname">
+                                        <TableColumn id="surname" fx:id="manager_surname" prefWidth="75.0"
+                                                     text="Surname">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="birthYear" fx:id="manager_birth" prefWidth="75.0" text="Birth Year">
+                                        <TableColumn id="birthYear" fx:id="manager_birth" prefWidth="75.0"
+                                                     text="Birth Year">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="birthYear"/>
                                             </cellValueFactory>
@@ -214,7 +220,8 @@
                                                 <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn id="birthYear" fx:id="coach_birth" prefWidth="75.0" text="Birth Year">
+                                        <TableColumn id="birthYear" fx:id="coach_birth" prefWidth="75.0"
+                                                     text="Birth Year">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="birthYear"/>
                                             </cellValueFactory>

@@ -33,6 +33,8 @@ public class MainController {
     @FXML
     private TableView<Person> amateur_table;
     public TableColumn<Person, String> amateur_name;
+    public TableColumn<Person, String> amateur_surname;
+    public TableColumn<Person, String> amateur_gender;
     public TableColumn<Person, Integer> amateur_birth;
     public TableColumn<Person, Boolean> amateur_swim;
     public TextField add_amateur_surname;
@@ -55,6 +57,16 @@ public class MainController {
         amateur_name.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
                         CellEditEvent.getTablePosition().getRow()).setName(CellEditEvent.getNewValue()));
+        amateur_surname.setOnEditCommit(
+                CellEditEvent -> CellEditEvent.getTableView().getItems().get(
+                        CellEditEvent.getTablePosition().getRow()).setSurname(CellEditEvent.getNewValue()));
+        amateur_gender.setOnEditCommit(
+                CellEditEvent -> CellEditEvent.getTableView().getItems().get(
+                        CellEditEvent.getTablePosition().getRow()).setGender(CellEditEvent.getNewValue()));
+        amateur_birth.setOnEditCommit(
+                CellEditEvent -> CellEditEvent.getTableView().getItems().get(
+                        CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
+
 
         amateur_birth.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         amateur_swim.setCellFactory(tc -> new CheckBoxTableCell<>());
@@ -135,6 +147,12 @@ public class MainController {
 
         Amateur amateur = new Amateur (surname, name, year, gender, swim);
         amateurs.add(amateur);
+    }
+
+    @FXML
+    protected void DeleteAmateur(ActionEvent event) throws IOException {
+        Person selectedPerson = amateur_table.getSelectionModel().getSelectedItem();
+        amateur_table.getItems().remove(selectedPerson);
     }
 
 }
