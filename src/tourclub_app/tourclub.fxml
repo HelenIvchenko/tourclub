@@ -109,7 +109,7 @@
                                 <Button fx:id="add_amateur_button" layoutX="425.0" layoutY="282.0"
                                         mnemonicParsing="false" onAction="#AddAmateur" prefHeight="25.0"
                                         prefWidth="56.0" text="Add"/>
-                                <Button fx:id="delete_amateur_button" layoutX="509.0" layoutY="282.0"
+                                <Button fx:id="delete_amateur_button" layoutX="510.0" layoutY="282.0"
                                         mnemonicParsing="false" onAction="#DeleteAmateur" prefHeight="25.0"
                                         prefWidth="53.0" text="Delete"/>
                             </children>
@@ -120,19 +120,25 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="sportsman_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0"
+                                <TableView fx:id="sportsman_table" layoutX="7.0" layoutY="8.0" prefHeight="248.0"
                                            prefWidth="592.0">
                                     <columns>
                                         <TableColumn id="name" fx:id="sportsman_name" prefWidth="75.0" text="Name">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
+                                            </cellFactory>
                                         </TableColumn>
                                         <TableColumn id="surname" fx:id="sportsman_surname" prefWidth="75.0"
                                                      text="Surname">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
+                                            </cellFactory>
                                         </TableColumn>
                                         <TableColumn id="birthYear" fx:id="sportsman_birth" prefWidth="75.0"
                                                      text="Birth Year">
@@ -145,6 +151,9 @@
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="gender"/>
                                             </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
+                                            </cellFactory>
                                         </TableColumn>
                                         <TableColumn id="level" fx:id="sportsman_level" prefWidth="75.0" text="Level">
                                             <cellValueFactory>
@@ -159,46 +168,23 @@
                                         </TableColumn>
                                     </columns>
                                 </TableView>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Managers">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <TableView fx:id="managers_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0"
-                                           prefWidth="592.0">
-                                    <columns>
-                                        <TableColumn id="name" fx:id="manager_name" prefWidth="75.0" text="Name">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="name"/>
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                        <TableColumn id="surname" fx:id="manager_surname" prefWidth="75.0"
-                                                     text="Surname">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="surname"/>
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                        <TableColumn id="birthYear" fx:id="manager_birth" prefWidth="75.0"
-                                                     text="Birth Year">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="birthYear"/>
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                        <TableColumn id="gender" fx:id="manager_gender" prefWidth="75.0" text="Gender">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="gender"/>
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                        <TableColumn id="salary" fx:id="manager_salary" prefWidth="75.0" text="Salary">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="salary"/>
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                    </columns>
-                                </TableView>
+                                <TextField fx:id="add_sportsman_name" layoutX="14.0" layoutY="274.0" prefHeight="25.0"
+                                           prefWidth="78.0" promptText="Name"/>
+                                <TextField fx:id="add_sportsman_surname" layoutX="101.0" layoutY="274.0"
+                                           prefHeight="25.0" prefWidth="78.0" promptText="Surname"/>
+                                <TextField fx:id="add_sportsman_year" layoutX="186.0" layoutY="274.0" prefHeight="25.0"
+                                           prefWidth="74.0" promptText="Birth Year"/>
+                                <TextField fx:id="add_sportsman_gender" layoutX="267.0" layoutY="274.0"
+                                           prefHeight="25.0" prefWidth="63.0" promptText="Gender"/>
+                                <TextField fx:id="add_sportsman_level" layoutX="337.0" layoutY="274.0" prefHeight="25.0"
+                                           prefWidth="64.0" promptText="Level"/>
+                                <CheckBox fx:id="add_sportsman_swim" layoutX="421.0" layoutY="278.0"
+                                          mnemonicParsing="false" text="Can Swim"/>
+                                <Button fx:id="add_sportsman_button" layoutX="503.0" layoutY="274.0"
+                                        mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add"
+                                        onAction="#AddSportsman"/>
+                                <Button fx:id="delete_sportsman_button" layoutX="503.0" layoutY="307.0"
+                                        mnemonicParsing="false" text="Delete" onAction="#DeleteSportsman"/>
                             </children>
                         </AnchorPane>
                     </content>
@@ -207,18 +193,24 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="coaches_table" layoutX="7.0" layoutY="8.0" prefHeight="337.0"
+                                <TableView fx:id="coaches_table" layoutX="7.0" layoutY="8.0" prefHeight="231.0"
                                            prefWidth="592.0">
                                     <columns>
                                         <TableColumn id="name" fx:id="coach_name" prefWidth="75.0" text="Name">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="name"/>
                                             </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
+                                            </cellFactory>
                                         </TableColumn>
                                         <TableColumn id="surname" fx:id="coach_surname" prefWidth="75.0" text="Surname">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="surname"/>
                                             </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
+                                            </cellFactory>
                                         </TableColumn>
                                         <TableColumn id="birthYear" fx:id="coach_birth" prefWidth="75.0"
                                                      text="Birth Year">
@@ -230,6 +222,9 @@
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="gender"/>
                                             </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn"/>
+                                            </cellFactory>
                                         </TableColumn>
                                         <TableColumn id="level" fx:id="coach_level" prefWidth="75.0" text="Level">
                                             <cellValueFactory>
@@ -243,6 +238,86 @@
                                         </TableColumn>
                                     </columns>
                                 </TableView>
+                                <TextField fx:id="add_coach_name" layoutX="7.0" layoutY="252.0" prefHeight="25.0"
+                                           prefWidth="91.0" promptText="Name"/>
+                                <TextField fx:id="add_coach_surname" layoutX="102.0" layoutY="252.0" prefHeight="25.0"
+                                           prefWidth="85.0" promptText="Surname"/>
+                                <TextField fx:id="add_coach_year" layoutX="193.0" layoutY="252.0" prefHeight="25.0"
+                                           prefWidth="67.0" promptText="Birth Year"/>
+                                <TextField fx:id="add_coach_gender" layoutX="268.0" layoutY="252.0" prefHeight="25.0"
+                                           prefWidth="66.0" promptText="Gender"/>
+                                <TextField fx:id="add_coach_level" layoutX="344.0" layoutY="252.0" prefHeight="25.0"
+                                           prefWidth="53.0" promptText="Level"/>
+                                <TextField fx:id="add_coach_salary" layoutX="404.0" layoutY="252.0" prefHeight="25.0"
+                                           prefWidth="63.0" promptText="Salary"/>
+                                <Button fx:id="add_coach_button" layoutX="508.0" layoutY="252.0" mnemonicParsing="false"
+                                        prefHeight="25.0" prefWidth="50.0" text="Add" onAction="#AddCoach"/>
+                                <Button fx:id="delete_coach_button" layoutX="508.0" layoutY="297.0"
+                                        mnemonicParsing="false" text="Delete" onAction="#DeleteCoach"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Managers">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="managers_table" layoutX="7.0" layoutY="8.0" prefHeight="246.0"
+                                           prefWidth="592.0">
+                                    <columns>
+                                        <TableColumn id="name" fx:id="manager_name" prefWidth="75.0" text="Name">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="name"/>
+                                            </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn" />
+                                            </cellFactory>
+                                        </TableColumn>
+                                        <TableColumn id="surname" fx:id="manager_surname" prefWidth="75.0"
+                                                     text="Surname">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="surname"/>
+                                            </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn" />
+                                            </cellFactory>
+                                        </TableColumn>
+                                        <TableColumn id="birthYear" fx:id="manager_birth" prefWidth="75.0"
+                                                     text="Birth Year">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="birthYear"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn id="gender" fx:id="manager_gender" prefWidth="75.0" text="Gender">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="gender"/>
+                                            </cellValueFactory>
+                                            <cellFactory>
+                                                <TextFieldTableCell fx:factory="forTableColumn" />
+                                            </cellFactory>
+                                        </TableColumn>
+                                        <TableColumn id="salary" fx:id="manager_salary" prefWidth="75.0" text="Salary">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="salary"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                                <TextField fx:id="add_manager_name" layoutX="14.0" layoutY="270.0" prefHeight="25.0"
+                                           prefWidth="82.0" promptText="Name"/>
+                                <TextField fx:id="add_manager_surname" layoutX="102.0" layoutY="270.0" prefHeight="25.0"
+                                           prefWidth="82.0" promptText="Surname"/>
+                                <TextField fx:id="add_manager_year" layoutX="190.0" layoutY="270.0" prefHeight="25.0"
+                                           prefWidth="82.0" promptText="Birth Year"/>
+                                <TextField fx:id="add_manager_gender" layoutX="278.0" layoutY="270.0" prefHeight="25.0"
+                                           prefWidth="82.0" promptText="Gender"/>
+                                <TextField fx:id="add_manager_salary" layoutX="366.0" layoutY="270.0" prefHeight="25.0"
+                                           prefWidth="82.0" promptText="Salary"/>
+                                <Button fx:id="add_manager_button" layoutX="482.0" layoutY="270.0"
+                                        mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Add"
+                                        onAction="#AddManager"/>
+                                <Button fx:id="delete_manager_button" layoutX="482.0" layoutY="307.0"
+                                        mnemonicParsing="false" text="Delete" onAction="#DeleteManager"/>
                             </children>
                         </AnchorPane>
                     </content>
