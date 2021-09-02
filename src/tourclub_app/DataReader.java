@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataReader {
-    ObservableList<Person> amateurs = FXCollections.observableArrayList();
-    ObservableList<Person> sportsmen = FXCollections.observableArrayList();
-    ObservableList<Person> managers = FXCollections.observableArrayList();
-    ObservableList<Person> coaches = FXCollections.observableArrayList();
+    ObservableList<Amateur> amateurs = FXCollections.observableArrayList();
+    ObservableList<Sportsman> sportsmen = FXCollections.observableArrayList();
+    ObservableList<Manager> managers = FXCollections.observableArrayList();
+    ObservableList<Coach> coaches = FXCollections.observableArrayList();
     Amateur amateur;
     Sportsman sportsman;
     Manager manager;

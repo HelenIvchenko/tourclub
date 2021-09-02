@@ -24,14 +24,14 @@ import java.util.*;
 
 public class MainController {
 
-    ObservableList<Person> amateurs = FXCollections.observableArrayList();
-    ObservableList<Person> sportsmen = FXCollections.observableArrayList();
-    ObservableList<Person> managers = FXCollections.observableArrayList();
-    ObservableList<Person> coaches = FXCollections.observableArrayList();
+    ObservableList<Amateur> amateurs = FXCollections.observableArrayList();
+    ObservableList<Sportsman> sportsmen = FXCollections.observableArrayList();
+    ObservableList<Manager> managers = FXCollections.observableArrayList();
+    ObservableList<Coach> coaches = FXCollections.observableArrayList();
     DataReader reader = new DataReader();
 
     @FXML
-    private TableView<Person> amateur_table;
+    private TableView<Amateur> amateur_table;
     public TableColumn<Person, String> amateur_name;
     public TableColumn<Person, String> amateur_surname;
     public TableColumn<Person, String> amateur_gender;
@@ -46,7 +46,7 @@ public class MainController {
     public CheckBox add_amateur_swim;
 
     @FXML
-    private TableView<Person> sportsman_table;
+    private TableView<Sportsman> sportsman_table;
     public TableColumn<Person, String> sportsman_name;
     public TableColumn<Person, String> sportsman_surname;
     public TableColumn<Person, String> sportsman_gender;
@@ -63,23 +63,7 @@ public class MainController {
     public CheckBox add_sportsman_swim;
 
     @FXML
-    private TableView<Person> managers_table;
-    public TableColumn<Person, String> manager_name;
-    public TableColumn<Person, String> manager_surname;
-    public TableColumn<Person, String> manager_gender;
-    public TableColumn<Person, Integer> manager_birth;
-    public TableColumn<Manager, Integer> manager_salary;
-    public TextField add_manager_surname;
-    public TextField add_manager_name;
-    public TextField add_manager_year;
-    public TextField add_manager_salary;
-    public TextField add_manager_gender;
-    public Button add_manager_button;
-    public Button delete_manager_button;
-
-
-    @FXML
-    private TableView<Person> coaches_table;
+    private TableView<Coach> coaches_table;
     public TableColumn<Person, String> coach_name;
     public TableColumn<Person, String> coach_surname;
     public TableColumn<Person, String> coach_gender;
@@ -95,6 +79,20 @@ public class MainController {
     public Button add_coach_button;
     public Button delete_coach_button;
 
+    @FXML
+    private TableView<Manager> managers_table;
+    public TableColumn<Person, String> manager_name;
+    public TableColumn<Person, String> manager_surname;
+    public TableColumn<Person, String> manager_gender;
+    public TableColumn<Person, Integer> manager_birth;
+    public TableColumn<Manager, Integer> manager_salary;
+    public TextField add_manager_surname;
+    public TextField add_manager_name;
+    public TextField add_manager_year;
+    public TextField add_manager_salary;
+    public TextField add_manager_gender;
+    public Button add_manager_button;
+    public Button delete_manager_button;
 
     public void initialize() {
 
@@ -120,7 +118,7 @@ public class MainController {
 
         //initialise sportsmen
 
-       sportsman_name.setOnEditCommit(
+        sportsman_name.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
                         CellEditEvent.getTablePosition().getRow()).setName(CellEditEvent.getNewValue()));
         sportsman_surname.setOnEditCommit(
@@ -177,7 +175,7 @@ public class MainController {
         coach_birth.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
                         CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
-       coach_salary.setOnEditCommit(
+        coach_salary.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
                         CellEditEvent.getTablePosition().getRow()).setSalary(CellEditEvent.getNewValue()));
         coach_level.setOnEditCommit(
@@ -196,19 +194,27 @@ public class MainController {
     @FXML
     protected void CloseAppAction(ActionEvent event) {
         Platform.exit();
+        System.exit(0);
     }
 
     @FXML
     protected void HelpAction(ActionEvent event) {
-        System.out.println("debug");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About program");
+        alert.setHeaderText("Application \"Hiking with Olena\"\n version 1.0 released 03.09.2021");
+        alert.setContentText("All rights reserved");
+
+        alert.showAndWait();
     }
 
     @FXML
-    protected void SaveAction(ActionEvent event) {
+    protected void SaveAction(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save");
         File csv_file = fileChooser.showSaveDialog(null);
-        //TODO: Actually save data to file
+        FileWriter csvWriter = new FileWriter(csv_file + ".csv");
+        DataSaver dataSaver = new DataSaver();
+        dataSaver.saveAll(csvWriter, amateurs, sportsmen, coaches, managers);
     }
 
     @FXML
@@ -260,7 +266,7 @@ public class MainController {
         }
 
 
-        Amateur amateur = new Amateur (surname, name, year, gender, swim);
+        Amateur amateur = new Amateur(surname, name, year, gender, swim);
         amateurs.add(amateur);
     }
 
@@ -284,7 +290,7 @@ public class MainController {
         }
 
 
-        Sportsman sportsman = new Sportsman (surname, name, year, gender, swim, level);
+        Sportsman sportsman = new Sportsman(surname, name, year, gender, swim, level);
         sportsmen.add(sportsman);
     }
 
@@ -303,7 +309,7 @@ public class MainController {
         String level = add_coach_level.getText();
         String salary = add_coach_salary.getText();
 
-        Coach coach = new Coach (surname, name, year, gender, level, salary);
+        Coach coach = new Coach(surname, name, year, gender, level, salary);
         coaches.add(coach);
     }
 
@@ -321,7 +327,7 @@ public class MainController {
         String gender = add_manager_gender.getText();
         String salary = add_manager_salary.getText();
 
-        Manager manager = new Manager (surname, name, year, gender, salary);
+        Manager manager = new Manager(surname, name, year, gender, salary);
         managers.add(manager);
     }
 

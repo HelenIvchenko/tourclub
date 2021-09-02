@@ -24,20 +24,8 @@
                 <Menu mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#DownloadFromCSVAction" text="Download from csv"/>
-                        <MenuItem mnemonicParsing="false" onAction="#SaveAction" text="Save"/>
-                        <MenuItem mnemonicParsing="false" onAction="#CloseAppAction" text="Close"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <Menu mnemonicParsing="false" text="Add">
-                            <items>
-                                <MenuItem mnemonicParsing="false" onAction="#AddAmateur" text="Amateur"/>
-                                <MenuItem mnemonicParsing="false" text="Trainer"/>
-                                <MenuItem mnemonicParsing="false" text="Sportsman"/>
-                                <MenuItem mnemonicParsing="false" text="Manager"/>
-                            </items>
-                        </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#SaveAction" text="Save to csv"/>
+                        <MenuItem mnemonicParsing="false" onAction="#CloseAppAction" text="Close application"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
