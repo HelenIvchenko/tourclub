@@ -51,7 +51,7 @@ public class MainController {
     public TableColumn<Person, String> sportsman_surname;
     public TableColumn<Person, String> sportsman_gender;
     public TableColumn<Person, Integer> sportsman_birth;
-    public TableColumn<Person, Integer> sportsman_level;
+    public TableColumn<Sportsman, Integer> sportsman_level;
     public TableColumn<Person, Boolean> sportsman_swim;
     public TextField add_sportsman_surname;
     public TextField add_sportsman_name;
@@ -68,7 +68,7 @@ public class MainController {
     public TableColumn<Person, String> manager_surname;
     public TableColumn<Person, String> manager_gender;
     public TableColumn<Person, Integer> manager_birth;
-    public TableColumn<Person, Integer> manager_salary;
+    public TableColumn<Manager, Integer> manager_salary;
     public TextField add_manager_surname;
     public TextField add_manager_name;
     public TextField add_manager_year;
@@ -84,8 +84,8 @@ public class MainController {
     public TableColumn<Person, String> coach_surname;
     public TableColumn<Person, String> coach_gender;
     public TableColumn<Person, Integer> coach_birth;
-    public TableColumn<Person, Integer> coach_level;
-    public TableColumn<Person, Integer> coach_salary;
+    public TableColumn<Coach, Integer> coach_level;
+    public TableColumn<Coach, Integer> coach_salary;
     public TextField add_coach_surname;
     public TextField add_coach_name;
     public TextField add_coach_year;
@@ -134,7 +134,7 @@ public class MainController {
                         CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
         sportsman_level.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
-                        CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
+                        CellEditEvent.getTablePosition().getRow()).setLevel(CellEditEvent.getNewValue()));
 
         sportsman_birth.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         sportsman_level.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -157,7 +157,7 @@ public class MainController {
                         CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
         manager_salary.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
-                        CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
+                        CellEditEvent.getTablePosition().getRow()).setSalary(CellEditEvent.getNewValue()));
 
         manager_birth.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         manager_salary.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -179,10 +179,10 @@ public class MainController {
                         CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
        coach_salary.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
-                        CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
+                        CellEditEvent.getTablePosition().getRow()).setSalary(CellEditEvent.getNewValue()));
         coach_level.setOnEditCommit(
                 CellEditEvent -> CellEditEvent.getTableView().getItems().get(
-                        CellEditEvent.getTablePosition().getRow()).setBirthYear(CellEditEvent.getNewValue()));
+                        CellEditEvent.getTablePosition().getRow()).setLevel(CellEditEvent.getNewValue()));
 
         coach_birth.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         coach_salary.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -309,7 +309,7 @@ public class MainController {
 
     @FXML
     protected void DeleteCoach(ActionEvent event) throws IOException {
-        Person selectedPerson = sportsman_table.getSelectionModel().getSelectedItem();
+        Person selectedPerson = coaches_table.getSelectionModel().getSelectedItem();
         coaches_table.getItems().remove(selectedPerson);
     }
 
@@ -327,7 +327,7 @@ public class MainController {
 
     @FXML
     protected void DeleteManager(ActionEvent event) throws IOException {
-        Person selectedPerson = sportsman_table.getSelectionModel().getSelectedItem();
+        Person selectedPerson = managers_table.getSelectionModel().getSelectedItem();
         managers_table.getItems().remove(selectedPerson);
     }
 

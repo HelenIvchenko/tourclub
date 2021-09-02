@@ -120,7 +120,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="sportsman_table" layoutX="7.0" layoutY="8.0" prefHeight="248.0"
+                                <TableView fx:id="sportsman_table" editable="true" layoutX="7.0" layoutY="8.0" prefHeight="248.0"
                                            prefWidth="592.0">
                                     <columns>
                                         <TableColumn id="name" fx:id="sportsman_name" prefWidth="75.0" text="Name">
@@ -193,7 +193,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="coaches_table" layoutX="7.0" layoutY="8.0" prefHeight="231.0"
+                                <TableView fx:id="coaches_table" editable="true" layoutX="7.0" layoutY="8.0" prefHeight="231.0"
                                            prefWidth="592.0">
                                     <columns>
                                         <TableColumn id="name" fx:id="coach_name" prefWidth="75.0" text="Name">
@@ -262,7 +262,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="managers_table" layoutX="7.0" layoutY="8.0" prefHeight="246.0"
+                                <TableView fx:id="managers_table" editable="true" layoutX="7.0" layoutY="8.0" prefHeight="246.0"
                                            prefWidth="592.0">
                                     <columns>
                                         <TableColumn id="name" fx:id="manager_name" prefWidth="75.0" text="Name">

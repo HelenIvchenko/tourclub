@@ -15,6 +15,10 @@ public class Manager extends Person {
         return salary.get();
     }
 
+    public void setSalary(int salary) {
+        this.salary.set(salary);
+    }
+
     protected SimpleIntegerProperty salary;
 
     Manager(String name,

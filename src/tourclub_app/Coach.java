@@ -5,7 +5,15 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Coach extends Person{
 
+    public void setLevel(int level) {
+        this.level.set(level);
+    }
+
     protected   SimpleIntegerProperty level;
+
+    public void setSalary(int salary) {
+        this.salary.set(salary);
+    }
 
     protected SimpleIntegerProperty salary;
     public SimpleIntegerProperty salaryProperty() {
