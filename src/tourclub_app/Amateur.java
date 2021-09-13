@@ -20,8 +20,6 @@ public class Amateur extends Person {
     }
 
     private SimpleBooleanProperty canSwim;
-    private String section;
-    private String group;
 
     Amateur(String name,
             String surname) {

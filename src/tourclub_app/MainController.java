@@ -268,6 +268,11 @@ public class MainController {
 
         Amateur amateur = new Amateur(surname, name, year, gender, swim);
         amateurs.add(amateur);
+        add_amateur_name.clear();
+        add_amateur_surname.clear();
+        add_amateur_year.clear();
+        add_amateur_gender.clear();
+        add_amateur_swim.setSelected(false);
     }
 
     @FXML
@@ -292,6 +297,12 @@ public class MainController {
 
         Sportsman sportsman = new Sportsman(surname, name, year, gender, swim, level);
         sportsmen.add(sportsman);
+        add_sportsman_name.clear();
+        add_sportsman_surname.clear();
+        add_sportsman_year.clear();
+        add_sportsman_gender.clear();
+        add_sportsman_level.clear();
+        add_sportsman_swim.setSelected(false);
     }
 
     @FXML
@@ -311,6 +322,13 @@ public class MainController {
 
         Coach coach = new Coach(surname, name, year, gender, level, salary);
         coaches.add(coach);
+
+        add_coach_name.clear();
+        add_coach_surname.clear();
+        add_coach_year.clear();
+        add_coach_gender.clear();
+        add_coach_level.clear();
+        add_coach_salary.clear();
     }
 
     @FXML
@@ -329,6 +347,12 @@ public class MainController {
 
         Manager manager = new Manager(surname, name, year, gender, salary);
         managers.add(manager);
+
+        add_manager_name.clear();
+        add_manager_surname.clear();
+        add_manager_year.clear();
+        add_manager_gender.clear();
+        add_manager_salary.clear();
     }
 
     @FXML
