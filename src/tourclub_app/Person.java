@@ -3,13 +3,17 @@ package tourclub_app;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TableView;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class Person {
 
     protected SimpleStringProperty name;
 
     public void setSurname(String surname) {
-        this.surname.set(surname);
+
+        if (!surname.equalsIgnoreCase("")) {
+            this.surname.set(surname);
+        }
     }
 
     protected SimpleStringProperty surname;
@@ -21,7 +25,9 @@ public abstract class Person {
     protected SimpleIntegerProperty birthYear;
 
     public void setGender(String gender) {
-        this.gender.set(gender);
+        if (!gender.equalsIgnoreCase("")) {
+            this.gender.set(gender);
+        }
     }
 
     protected SimpleStringProperty gender;
@@ -42,7 +48,9 @@ public abstract class Person {
     }
 
     public void setName(String set_name) {
-        this.name.set(set_name);
+        if (!set_name.equalsIgnoreCase("")) {
+            this.name.set(set_name);
+        }
     }
 
     public String getSurname() {
